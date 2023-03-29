@@ -1,14 +1,14 @@
 import { CreateNodecgConstructor, CreateNodecgInstance } from 'ts-nodecg/browser';
 
 export type BundleNodecgInstance = CreateNodecgInstance<
-  '<bundle-name>',
+  'tokyo-rta-live-layouts',
   Configschema,
   ReplicantMap,
   MessageMap
 >;
 
 export type BundleNodecgConstructor = CreateNodecgConstructor<
-  '<bundle-name>',
+  'tokyo-rta-live-layouts',
   Configschema,
   ReplicantMap,
   MessageMap

@@ -1,5 +1,5 @@
 FROM cma2819/nodecg
 
-# RUN nodecg install cma2819/some-dependency
+RUN nodecg install nodecg/nodecg-speedcontrol
 
 CMD ["nodecg", "start"]

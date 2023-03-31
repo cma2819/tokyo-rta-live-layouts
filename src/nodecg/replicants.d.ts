@@ -1,17 +1,12 @@
-import { Asset } from './asset';
-import { Message, Timekeeping, TwitchCredential } from './generated';
+import { PracticeRun, SetupText } from './generated';
 
 type ReplicantMap = {
-  'assets:logo': Asset[];
-  'assets:sponsor-logo': Asset[];
-  'assets:background-image': Asset[];
-  timekeeping: Timekeeping;
-  message: Message;
-  twitchCredential: TwitchCredential;
+  setupText: SetupText;
+  practiceRun: PracticeRun;
 };
 
 export {
-  Timekeeping,
-  Message,
-  ReplicantMap
+  SetupText,
+  PracticeRun,
+  ReplicantMap,
 };

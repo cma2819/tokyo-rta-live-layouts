@@ -1,4 +1,6 @@
 import { CreateNodecgConstructor, CreateNodecgInstance } from 'ts-nodecg/browser';
+import { ReplicantMap } from '../nodecg/replicants';
+import { SpeedcontrolConstructor, SpeedcontrolInstance } from '../nodecg/speedcontrol';
 
 export type BundleNodecgInstance = CreateNodecgInstance<
   'tokyo-rta-live-layouts',
@@ -15,7 +17,7 @@ export type BundleNodecgConstructor = CreateNodecgConstructor<
 >;
 
 declare global {
-  const nodecg: BundleNodecgInstance;
+  const nodecg: BundleNodecgInstance | SpeedcontrolInstance;
 
-  const NodeCG: BundleNodecgConstructor;
+  const NodeCG: BundleNodecgConstructor | SpeedcontrolConstructor;
 }

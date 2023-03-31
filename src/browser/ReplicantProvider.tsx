@@ -1,14 +1,22 @@
 import { clone } from 'lodash';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
-import { BundleNodecgInstance } from '../nodecg/nodecg';
+import { PracticeRun, SetupText } from '../nodecg/generated';
+import { BundleNodecgInstance } from './global';
 
 type Replicants = {
-  // rep: type
+  setupText: SetupText;
+  practiceRun: PracticeRun;
 }
 
+const Replicants = ['setupText', 'practiceRun'] as const;
+
 const defaultValues: Replicants = {
-  // rep: value
-};
+  setupText: '',
+  practiceRun: {
+    name: '',
+    player: '',
+  }
+} as const;
 
 export const ReplicantContext = createContext<Replicants>(defaultValues);
 
@@ -17,19 +25,24 @@ type Props = {
 }
 
 export const ReplicantProvider = ({ children }: Props) => {
-  nodecg as BundleNodecgInstance;
 
-  // const [rep, setRep] = useState<Type>(defaultValues.rep);
+  const [setupText, setSetupText] = useState<SetupText>(defaultValues.setupText);
+  const [practiceRun, setPracticeRun] = useState<PracticeRun>(defaultValues.practiceRun);
+
 
   useEffect(() => {
-    // (nodecg as BundleNodecgInstance).Replicant('rep').on('change', (newVal) => {
-    //   setRep(clone(newVal));
-    // });
+    (nodecg as BundleNodecgInstance).Replicant('setupText', { defaultValue: defaultValues.setupText }).on('change', (newVal) => {
+      setSetupText(clone(newVal));
+    });
+    (nodecg as BundleNodecgInstance).Replicant('practiceRun', { defaultValue: defaultValues.practiceRun }).on('change', (newVal) => {
+      setPracticeRun(clone(newVal));
+    });
   }, [])
 
   return (
     <ReplicantContext.Provider value={{
-      // rep
+      setupText,
+      practiceRun,
     }}>
       { children }
     </ReplicantContext.Provider>

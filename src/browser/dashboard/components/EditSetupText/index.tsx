@@ -27,6 +27,11 @@ export const EditSetupText = () => {
         fullWidth
         value={setupText}
         onChange={(e) => { setSetupText(e.target.value) }}
+        onKeyDown={(e) => {
+          if(e.key === 'Enter') {
+            submitSetupText();
+          }
+        }}
       />
       <Button
         color='primary'
